@@ -7,13 +7,14 @@ bot = telebot.TeleBot('5421439498:AAGppFxe-rh_WTM5SUEGJmtLiPMCd20_SJo')
 start_time = time.perf_counter()
 delta_sec = 0
 
-members_id = []
+members_id = set()
+
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     global start_time
     global members_id
-    members_id.append(message.from_user.id)
+    members_id.add(message.from_user.id)
 
     if message.text == "/count":
         bot.send_message(message.from_user.id, "Ты не был в Right Hops уже %.3f секунд :(((" % delta_sec)
@@ -32,25 +33,25 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, "Заебал, нихуя не понятно, жмакни /help.")
 
 
-def counter():
+def _counter():
     global delta_sec
     while True:
         delta_sec = time.perf_counter() - start_time
 
 
-def vzdrachivatel():
+def _vzdrachivatel():
     t0 = time.perf_counter()
     while True:
-        if time.perf_counter() - t0 > 15:
+        if time.perf_counter() - t0 > 86400:
             t0 = time.perf_counter()
             for mem in members_id:
                 bot.send_message(mem, "ТЫ ПИДОР")
 
 
-if __name__ == "__main__":
+def start():
     threads = [
-        Thread(target=counter),
-        Thread(target=vzdrachivatel),
+        Thread(target=_counter),
+        Thread(target=_vzdrachivatel),
     ]
     for th in threads:
         th.start()

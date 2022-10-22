@@ -7,8 +7,8 @@ authors = ["p.ulanov <p.ulanov@1440.space>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 numpy = ">=1.18,<1.23"
-pytelegrambotapi = "4.7.0"
-loguru = "0.6.0"
+pytelegrambotapi = "*"
+loguru = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
