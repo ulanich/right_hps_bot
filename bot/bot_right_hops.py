@@ -39,7 +39,7 @@ def get_text_messages(message):
         bot.send_message(message.chat.id, f"Время попойки: {members.get(message.chat.id).check_in_time}")
         time.sleep(1)
         bot.send_message(message.chat.id, "Не забудь заказать похавоть, чеб не разъебало раньше времени")
-    elif message.text == "/help":
+    elif message.text == "/help" or message.text == "/start":
         bot.send_message(message.chat.id, "Счетчик того, сколько ты уже не захаживал в Right Hops")
         time.sleep(1)
         bot.send_message(message.chat.id, "Если хочешь узнать, сколько ты продержался без невъебенного вкуса пива с картошечкой, хуярь /count")
