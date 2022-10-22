@@ -21,6 +21,8 @@ def get_text_messages(message):
                 message.chat.id,
                 f"Ты бы притормозил, судя по таймеру ты заливался меньше одного дня назад",
             )
+            bot.send_sticker(message.chat.id,
+                             'CAACAgIAAxkBAAEGLBFjVGJ76EOHLXzJiRSNb-ywZD19IAACkgEAAonq5QcjCcbKL6NW8yoE')
         else:
             bot.send_message(
                 message.chat.id,
@@ -31,6 +33,8 @@ def get_text_messages(message):
         for mem in members.members:
             if message.chat.id == mem.id:
                 mem.check_in()
+        bot.send_sticker(message.chat.id,
+                         'CAACAgIAAxkBAAEGLBNjVGKjmz7Z42HqBHARpIdwBt-twQACbQEAAonq5QeQ9Vt1jHr5yyoE')
         bot.send_message(message.chat.id, "Здарова, заебал")
         bot.send_message(message.chat.id, f"Время попойки: {members.get(message.chat.id).check_in_time}")
         time.sleep(1)
@@ -42,6 +46,7 @@ def get_text_messages(message):
         time.sleep(1)
         bot.send_message(message.chat.id, "Если ты красавчик и сейчас хуяришь пиво в любимом барчике, хуярь /check_in")
     else:
+        bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAEGLA9jVGJepCTY2pXMvGTwo2ZjivZ_mQACTAEAAonq5QcmOMdrO1Q6TSoE')
         bot.send_message(message.chat.id, "Заебал, нихуя не понятно, жмакни /help.")
 
 
