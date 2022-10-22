@@ -1,1 +1,1 @@
-web: poetry run python bot
+worker: python bot/__main__.py
