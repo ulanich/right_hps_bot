@@ -4,4 +4,5 @@ pepe = {
     'angry': 'CAACAgIAAxkBAAEGLA9jVGJepCTY2pXMvGTwo2ZjivZ_mQACTAEAAonq5QcmOMdrO1Q6TSoE',
     'ready': 'CAACAgIAAxkBAAEGLt1jVYZu6aWxm4PUBmPzIU_1TqHogAACdgEAAonq5QfGntvLIQzPUCoE',
     'sad': 'CAACAgIAAxkBAAEGLt9jVYdXYw9Hq9M14NjwkbjfDLyeswACWAEAAonq5QeMeUNGvbmmRioE',
+    'fat': 'CAACAgIAAxkBAAEGLwhjVZDWok3KRWVAHEKa9431a6aO9gAC9QEAAonq5QfrVXVUVf_t-CoE',
 }
