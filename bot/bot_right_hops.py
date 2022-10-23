@@ -3,6 +3,7 @@ import time
 from threading import Thread
 from loguru import logger
 from chat_helpers import Chat, Container, literal_days
+from emoji import pepe
 
 bot = telebot.TeleBot('5421439498:AAGppFxe-rh_WTM5SUEGJmtLiPMCd20_SJo')
 
@@ -21,8 +22,7 @@ def get_text_messages(message):
                 message.chat.id,
                 f"Ты бы притормозил, судя по таймеру ты заливался меньше одного дня назад",
             )
-            bot.send_sticker(message.chat.id,
-                             'CAACAgIAAxkBAAEGLBFjVGJ76EOHLXzJiRSNb-ywZD19IAACkgEAAonq5QcjCcbKL6NW8yoE')
+            bot.send_sticker(message.chat.id, pepe.get('die'))
         else:
             bot.send_message(
                 message.chat.id,
@@ -33,20 +33,19 @@ def get_text_messages(message):
         for mem in members.members:
             if message.chat.id == mem.id:
                 mem.check_in()
-        bot.send_sticker(message.chat.id,
-                         'CAACAgIAAxkBAAEGLBNjVGKjmz7Z42HqBHARpIdwBt-twQACbQEAAonq5QeQ9Vt1jHr5yyoE')
+        bot.send_sticker(message.chat.id, pepe.get('happy'))
         bot.send_message(message.chat.id, "Здарова, заебал")
         bot.send_message(message.chat.id, f"Время попойки: {members.get(message.chat.id).check_in_time}")
         time.sleep(1)
         bot.send_message(message.chat.id, "Не забудь заказать похавоть, чеб не разъебало раньше времени")
     elif message.text == "/help" or message.text == "/start":
-        bot.send_message(message.chat.id, "Счетчик того, сколько ты уже не захаживал в Right Hops")
-        time.sleep(1)
-        bot.send_message(message.chat.id, "Если хочешь узнать, сколько ты продержался без невъебенного вкуса пива с картошечкой, хуярь /count")
-        time.sleep(1)
-        bot.send_message(message.chat.id, "Если ты красавчик и сейчас хуяришь пиво в любимом барчике, хуярь /check_in")
+        bot.send_sticker(message.chat.id, pepe.get('ready'))
+        bot.send_message(message.chat.id, "Счетчик того, сколько ты уже не захаживал в Right Hops\n"
+                                          "Если хочешь узнать, сколько ты продержался без невъебенного вкуса пива с "
+                                          "картошечкой, хуярь /count\n"
+                                          "Если ты красавчик и сейчас хуяришь пиво в любимом барчике, хуярь /check_in")
     else:
-        bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAEGLA9jVGJepCTY2pXMvGTwo2ZjivZ_mQACTAEAAonq5QcmOMdrO1Q6TSoE')
+        bot.send_sticker(message.chat.id, pepe.get('angry'))
         bot.send_message(message.chat.id, "Заебал, нихуя не понятно, жмакни /help.")
 
 
