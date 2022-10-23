@@ -28,6 +28,7 @@ def get_text_messages(message):
                 message.chat.id,
                 f"Ты не был в Right Hops уже {chat.time_delta.days} {literal_days(chat.time_delta.days)} :(((",
             )
+            bot.send_sticker(message.chat.id, pepe.get('sad'))
 
     elif message.text == "/check_in":
         for mem in members.members:
@@ -35,7 +36,8 @@ def get_text_messages(message):
                 mem.check_in()
         bot.send_sticker(message.chat.id, pepe.get('happy'))
         bot.send_message(message.chat.id, "Здарова, заебал")
-        bot.send_message(message.chat.id, f"Время попойки: {members.get(message.chat.id).check_in_time}")
+        check_time = members.get(message.chat.id).check_in_time.strftime("%m-%d-%Y %H:%M:%S")
+        bot.send_message(message.chat.id, f"Время попойки: {check_time}")
         time.sleep(1)
         bot.send_message(message.chat.id, "Не забудь заказать похавоть, чеб не разъебало раньше времени")
     elif message.text == "/help" or message.text == "/start":
