@@ -54,3 +54,10 @@ def literal_days(days: int):
         return 'дня'
     else:
         return 'дней'
+
+
+def calc_delta(sec: float) -> str:
+    hours = sec//3600
+    minutes = sec//60
+    sec %= 60
+    return f'{hours}:{minutes}:{sec}'

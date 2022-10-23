@@ -2,7 +2,7 @@ import telebot
 import time
 from threading import Thread
 from loguru import logger
-from chat_helpers import Chat, Container, literal_days
+from chat_helpers import Chat, Container, literal_days, calc_delta
 from emoji import pepe
 
 bot = telebot.TeleBot('5421439498:AAGppFxe-rh_WTM5SUEGJmtLiPMCd20_SJo')
@@ -20,7 +20,7 @@ def get_text_messages(message):
         if chat.time_delta.days == 0:
             bot.send_message(
                 message.chat.id,
-                f"Ты бы притормозил, судя по таймеру ты заливался меньше одного дня назад",
+                f"Ты заливался меньше одного дня назад - {calc_delta(chat.time_delta.days)}",
             )
             bot.send_sticker(message.chat.id, pepe.get('die'))
         else:
