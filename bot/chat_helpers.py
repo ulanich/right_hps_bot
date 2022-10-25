@@ -6,14 +6,13 @@ from datetime import datetime, timedelta
 class Chat:
     id: int
     check_in_time: datetime = field(init=False)
-    time_delta: timedelta = field(init=False)
 
     def __post_init__(self):
         self.check_in_time = datetime.now()
-        self.time_delta = timedelta()
 
-    def calc_delta(self):
-        self.time_delta = datetime.now() - self.check_in_time
+    @property
+    def time_delta(self) -> timedelta:
+        return datetime.now() - self.check_in_time
 
     def check_in(self):
         self.check_in_time = datetime.now()

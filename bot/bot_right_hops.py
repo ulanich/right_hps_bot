@@ -1,10 +1,9 @@
 import telebot
 import time
-from threading import Thread
 from loguru import logger
 from chat_helpers import Chat, Container, literal_days, calc_delta
 from emoji import pepe
-from game import start_game
+from game import AlcoGame
 
 bot = telebot.TeleBot('5421439498:AAGppFxe-rh_WTM5SUEGJmtLiPMCd20_SJo')
 
@@ -50,27 +49,16 @@ def get_text_messages(message):
         time.sleep(1)
         bot.send_message(message.chat.id, "Если ты красавчик и сейчас хуяришь пиво в любимом барчике, хуярь /check_in")
     elif message.text == "/play":
+        _game = AlcoGame()
         bot.send_sticker(message.chat.id, pepe.get('ready'))
-        bot.send_message(message.chat.id, "Пока не готово...")
-        start_game()
+        bot.send_message(message.chat.id, "Для регистрации нового участника жмакай /reg")
+        bot.register_next_step_handler_by_chat_id(message.chat.id, _game.reg_new_mem)
     else:
         bot.send_sticker(message.chat.id, pepe.get('angry'))
         bot.send_message(message.chat.id, "Заебал, нихуя не понятно, жмакни /help.")
 
 
-def _counter():
-    while True:
-        for mem in members.members:
-            mem.calc_delta()
-
-
 def start():
-    threads = [
-        Thread(target=_counter),
-    ]
-    for th in threads:
-        th.start()
-
     logger.info('Бот запущен')
     bot.polling(none_stop=True, interval=1)
     logger.info('Бот здох')
